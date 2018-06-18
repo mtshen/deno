@@ -23,7 +23,7 @@ std::vector<InternalFieldData*> deserialized_data;
 
 void DeserializeInternalFields(v8::Local<v8::Object> holder, int index,
                                v8::StartupData payload, void* data) {
-  assert(data == nullptr);  // TODO(ry) pass Deno* object here.
+  assert(data == nullptr);
   if (payload.raw_size == 0) {
     holder->SetAlignedPointerInInternalField(index, nullptr);
     return;

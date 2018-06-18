@@ -11,7 +11,7 @@ namespace deno {
 
 v8::StartupData SerializeInternalFields(v8::Local<v8::Object> holder, int index,
                                         void* data) {
-  DCHECK_EQ(data, nullptr);  // TODO(ry) pass Deno* object here.
+  DCHECK_EQ(data, nullptr);
   InternalFieldData* embedder_field = static_cast<InternalFieldData*>(
       holder->GetAlignedPointerFromInternalField(index));
   if (embedder_field == nullptr) return {nullptr, 0};
