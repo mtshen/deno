@@ -35,8 +35,6 @@ void DeserializeInternalFields(v8::Local<v8::Object> holder, int index,
 }
 
 Deno* NewFromSnapshot(void* data, deno_sub_cb cb) {
-  v8::DeserializeInternalFieldsCallback(DeserializeInternalFields, nullptr);
-
   Deno* d = new Deno;
   d->currentArgs = nullptr;
   d->cb = cb;
