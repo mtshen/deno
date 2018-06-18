@@ -1,12 +1,12 @@
 // Copyright 2018 Ryan Dahl <ry@tinyclouds.org>
 // All rights reserved. MIT License.
-#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <string>
 
 #include "v8/include/v8.h"
+#include "v8/src/base/logging.h"
 
 #include "./deno_internal.h"
 #include "include/deno.h"
@@ -23,7 +23,7 @@ std::vector<InternalFieldData*> deserialized_data;
 
 void DeserializeInternalFields(v8::Local<v8::Object> holder, int index,
                                v8::StartupData payload, void* data) {
-  assert(data == nullptr);
+  DCHECK_EQ(data, nullptr);
   if (payload.raw_size == 0) {
     holder->SetAlignedPointerInInternalField(index, nullptr);
     return;
